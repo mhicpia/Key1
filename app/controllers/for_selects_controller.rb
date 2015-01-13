@@ -4,7 +4,13 @@ class ForSelectsController < ApplicationController
   # GET /for_selects
   # GET /for_selects.json
   def index
-    @for_selects = ForSelect.all
+    # byebug
+    # @for_selects = ForSelect.all
+    @q = ForSelect.search(params[:q])
+    @for_selects = @q.result.page(params[:page]).per(15)
+
+    @totNumber = ForSelect.all.count
+    @searchNumber = @q.result.count
   end
 
   # GET /for_selects/1
@@ -15,11 +21,15 @@ class ForSelectsController < ApplicationController
   # GET /for_selects/new
   def new
     @for_select = ForSelect.new
-  end
+    # Generate the 2d array needed for grouped select in view
+    @grouped_options = ForSelect.GroupedSelect('0038','facility', ForSelect)
+ end
 
   # GET /for_selects/1/edit
   def edit
-  end
+    # Generate the 2d array needed for grouped select in view
+    @grouped_options = ForSelect.GroupedSelect('0038','facility', ForSelect)
+ end
 
   # POST /for_selects
   # POST /for_selects.json
