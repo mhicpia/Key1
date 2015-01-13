@@ -10,5 +10,7 @@ class CreateKeys < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :keys, :company
+    add_index :keys, :facility
   end
 end

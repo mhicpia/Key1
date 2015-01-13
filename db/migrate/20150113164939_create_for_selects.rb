@@ -10,5 +10,6 @@ class CreateForSelects < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :for_selects, :code
   end
 end
