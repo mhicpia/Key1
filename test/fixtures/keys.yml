@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  description: MyText
+  number: MyString
+  facility: MyString
+  company: MyString
+  checkout: 2015-01-13
+  checkin: 2015-01-13
+
+two:
+  description: MyText
+  number: MyString
+  facility: MyString
+  company: MyString
+  checkout: 2015-01-13
+  checkin: 2015-01-13
