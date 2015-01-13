@@ -1,0 +1,59 @@
+<table>
+  <thead>
+    <tr class="tableHeader">
+      <th><%= sort_link(@q, :description, "Description") %></th>
+      <th><%= sort_link(@q, :number) %></th>
+      <% if session[:role] == "admin2" %>
+        <th><%= sort_link(@q, :facility, "Fac") %></th>
+      <% end %>
+      <th><%= sort_link(@q, :company) %></th>
+      <th><%= sort_link(@q, :checkout, "Checkout") %></th>
+      <th><%= sort_link(@q, :checkin, "Checkin") %></th>
+      <th></th>
+      <% if session[:role] == "admin2" %>
+        <th></th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% @keys.each do |key| %>
+      <tr>
+        <td><%= key.description %></td>
+        <td><%= key.number %></td>
+        <% if session[:role] == "admin2" %>
+          <td><%= key.facility %></td>
+        <% end %>
+        <% unless key.checkout.blank? %>
+          <td><%= key.checkout.strftime('%F') %></td>
+        <% else %>
+          <td> </td>
+        <% end %>
+        <td><%= key.company %></td>
+        <% unless key.checkin.blank? %>
+          <td colspan="5"><%= key.checkin.strftime('%F') %></td>
+        <% else %>
+          <td> </td>
+        <% end %>
+
+        <td><%= link_to 'Show', key %></td>
+        <td><%= link_to 'Edit', edit_key_path(key) %></td>
+        <td><%= link_to 'Destroy', key, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+
+        <!-- <td><%#= link_to 'Show', key %></td> -->
+        <td><%= link_to 'Edit', edit_key_path(key), class: 'lEdit', remote: true%></td>
+        <% if session[:role] == "admin2" %>
+          <td><%= link_to 'Destroy', key, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+        <% end %>
+      </tr>
+    <% end %>
+    <tr>
+      <td colspan="6" class="tableFooter">
+        <%= paginate @keys %>
+      </td>
+      <td colspan="4" class="tableFooter">
+        <%= @searchNumber %>  from <%= @totNumber %> total
+      </td>
+    </tr>
+  </tbody> 
+</table> 

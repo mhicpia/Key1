@@ -11,31 +11,42 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
+  <div class="panel callout radius">
+    <div>
+      <%= f.label :description %>
+      <%= f.text_area :description %>
+    </div>
+    <div>
+      <%= f.label :number %>
+      <%= f.text_field :number %>
+    </div>
+    <div id="divFacility">
+      <%= f.label :facility %>
+      <%#= f.text_field :facility %>
+      <%= f.select(:facility, grouped_options_for_select(@grouped_options2), prompt: 'Choose Facility') %>
+    </div>
+    <div>
+      <%= f.label :company %>
+      <%#= f.text_field :ward %>
+      <%= f.select(:company, grouped_options_for_select(@grouped_options), prompt: 'Choose Company') %>
+    </div>
+    <div>
+      <%= f.label :checkout %>
+      <%= f.date_field :checkout %>
+    </div>
+    <div>
+      <%= f.label :checkin %>
+      <%= f.date_field :checkin %>
+    </div>
+  </div> 
+
+  <div class="row">
+    <div class="small-6 columns">
+      <%= f.submit(class: 'button tiny radius') %>
+    </div>
+    <div class="small-6 columns">
+      <%= link_to("Cancel", "#", id: "bCancel", class: "button tiny radius") %>
+    </div>       
   </div>
-  <div class="field">
-    <%= f.label :number %><br>
-    <%= f.text_field :number %>
-  </div>
-  <div class="field">
-    <%= f.label :facility %><br>
-    <%= f.text_field :facility %>
-  </div>
-  <div class="field">
-    <%= f.label :company %><br>
-    <%= f.text_field :company %>
-  </div>
-  <div class="field">
-    <%= f.label :checkout %><br>
-    <%= f.date_select :checkout %>
-  </div>
-  <div class="field">
-    <%= f.label :checkin %><br>
-    <%= f.date_select :checkin %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+
 <% end %>

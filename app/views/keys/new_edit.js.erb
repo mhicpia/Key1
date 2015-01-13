@@ -1,0 +1,42 @@
+// Insert new/edit form into divForm
+	$('#divForm').html("<%= j render('form') %>");
+
+// COMPANY VALUES
+	// If "new" company will be nil, if edit will have a value
+	var company = "<%=  @key.company %>"
+	// alert(company.length)
+	if (company.length > 0) {
+		$('#key_company').val(company);
+	};
+
+//FACILITY VALUES
+	var facility = "<%=  @key.facility %>"
+	// Get users facility. If not admin2 set can only create new key for that facility
+	var user_facility = "<%= session[:facility] %>"
+	// Get role as non admin2 cannot change facility values
+	var role = "<%= session[:role] %>" 
+	// Get Facility name
+	var facility_name = "<%= session[:facilityname] %>"
+	
+
+	if (role == 'admin2') {
+		if (facility.length > 0) {
+			$('#key_facility').val(facility);
+		};
+	} else {
+		if (facility.length > 0) {
+			$('#key_facility').val(facility).hide();
+			$('#divFacility').append('&nbsp;&nbsp;&nbsp;&nbsp;'+facility_name);
+		} else {
+			$('#key_facility').val(user_facility).hide();
+			$('#divFacility').append('&nbsp;&nbsp;&nbsp;&nbsp;'+facility_name);
+		};
+	};
+	
+
+	$('#bNew').hide();
+	$('#bCancel').click(function(){
+		// $('#scompany').appendTo('#divIndexHideWrapper');
+		$('#divForm').html("");
+		$('#bNew').show();
+	});

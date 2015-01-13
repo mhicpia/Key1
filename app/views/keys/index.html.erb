@@ -1,37 +1,83 @@
-<h1>Listing keys</h1>
+<div class="row">
+  <div class="large-3 large-centered columns alignCenterNoPadding">
+    <h3>Key List</h3>
+  </div>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Description</th>
-      <th>Number</th>
-      <th>Facility</th>
-      <th>Company</th>
-      <th>Checkout</th>
-      <th>Checkin</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+<div class="row">  
+  <div class="large-9 columns">
+    <div class="panel radius">
+      <div class="panel callout radius">
+              <%= search_form_for @q, id: 'fKey_filter', remote: true do |f| %>
+          <div class="row collapse">
 
-  <tbody>
-    <% @keys.each do |key| %>
-      <tr>
-        <td><%= key.description %></td>
-        <td><%= key.number %></td>
-        <td><%= key.facility %></td>
-        <td><%= key.company %></td>
-        <td><%= key.checkout %></td>
-        <td><%= key.checkin %></td>
-        <td><%= link_to 'Show', key %></td>
-        <td><%= link_to 'Edit', edit_key_path(key) %></td>
-        <td><%= link_to 'Destroy', key, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+            <div class="hide">
+              <div class="small-2 columns">
+                <%= f.submit class: 'button tiny radius' %>           
+              </div>
+            </div>
+
+            <div class="small-12 columns">
+              <div class="row collapse">
+                <div class="small-1 columns">
+                  <%= f.label(:company_eq, "Company", class: "right inline")  %>
+                </div>
+                <div class="small-2 left columns">
+                  <%#= f.search_field :company_cont %>
+                  <%= f.select(:company_eq, grouped_options_for_select(@grouped_options), prompt: 'Choose...') %>
+                </div>
+                <div class="small-2 columns">
+                  <%= f.label(:description_start, 'Description:', class: "right inline")  %>  
+                </div>
+                <div class="small-3 left columns">
+                  <%= f.search_field :description_start %>
+                </div>
+              </div>
+              <div class="row collapse">
+                <div class="small-1 columns">
+                  <%= f.label(:number_start, 'Number:', class: "right inline")  %>  
+                </div>
+                <div class="small-2 left columns">
+                  <%= f.search_field :number_start %>
+                </div>
+                <div class="small-1 columns">
+                  <%= f.label(:checkout_gteq, 'Checkout:', class: "right inline")  %>  
+                </div>
+                <div class="small-3 left columns">
+                  <%= f.date_field :checkout_gteq %>
+                </div>
+                <div class="small-2 columns">
+                  <%= f.label(:checkin_lteq, 'Checkin:', class: "right inline")  %>  
+                </div>
+                <div class="small-3 left columns">
+                  <%= f.date_field :checkin_lteq %>
+                </div>
+              </div>   
+            </div>
+
+          </div>
+          
+        <% end %>
+
+      </div>
+      <div id="divTable">
+        <%= render('table') %>
+      </div>
+    </div>
+  </div>
+    <div class="large-3 columns">
+      <div class="panel radius">
+        <!-- <div class="panel callout radius"> -->
+          <div class="large-centered">
+              <%= link_to 'New Pat', new_key_path, class: "button tiny radius", id: 'bNew', remote: true%>
+          </div>
+          <div id="divForm">
+            <%#= render('form') %> 
+          </div>
+        <!-- </div> -->
+      </div>
+    </div>
 
 <br>
 
-<%= link_to 'New Key', new_key_path %>
+</div>

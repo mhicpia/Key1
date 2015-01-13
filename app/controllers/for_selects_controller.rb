@@ -22,13 +22,13 @@ class ForSelectsController < ApplicationController
   def new
     @for_select = ForSelect.new
     # Generate the 2d array needed for grouped select in view
-    @grouped_options = ForSelect.GroupedSelect('0038','facility', ForSelect)
+    @grouped_options = ForSelect.GroupedSelect('9999','facility', ForSelect)
  end
 
   # GET /for_selects/1/edit
   def edit
     # Generate the 2d array needed for grouped select in view
-    @grouped_options = ForSelect.GroupedSelect('0038','facility', ForSelect)
+    @grouped_options = ForSelect.GroupedSelect('9999','facility', ForSelect)
  end
 
   # POST /for_selects
