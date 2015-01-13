@@ -1,7 +1,11 @@
 Key1::Application.routes.draw do
+<<<<<<< HEAD
 
   resources :for_selects
 
+=======
+  resources :for_selects
+>>>>>>> app_keys
   resources :keys
 
 
