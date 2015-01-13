@@ -1,5 +1,9 @@
 Key1::Application.routes.draw do
+<<<<<<< HEAD
   resources :for_selects
+=======
+  resources :keys
+>>>>>>> app_keys
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
