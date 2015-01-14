@@ -6,6 +6,7 @@ class ForSelectsController < ApplicationController
   def index
     # byebug
     # @for_selects = ForSelect.all
+    #session[:facility] = "0038"
     @q = ForSelect.search(params[:q])
     @for_selects = @q.result.page(params[:page]).per(15)
 

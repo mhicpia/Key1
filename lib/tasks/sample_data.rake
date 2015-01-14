@@ -14,5 +14,18 @@ namespace :db do
 						checkout: checkout,
 						checkin: checkin)
 		end
+
+		250.times do |n|
+			description = Faker::Company.catch_phrase
+			number = Faker::Number.number(7)
+			checkout = Faker::Business.credit_card_expiry_date
+			checkin = Faker::Business.credit_card_expiry_date
+
+			Key.create!(description: description,
+						number: number,
+						facility: '0036',
+						checkout: checkout,
+						checkin: checkin)
+		end
 	end
 end

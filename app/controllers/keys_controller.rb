@@ -15,7 +15,7 @@ class KeysController < ApplicationController
     @searchNumber = @q.result.count  
   
     # Generate the 2d array needed for grouped select in view
-    @grouped_options = ForSelect.GroupedSelect(session[:facility],'company', ForSelect) 
+    @grouped_options = ForSelect.GroupedSelect(session[:facility], 'company', ForSelect) 
     @grouped_options2 = ForSelect.GroupedSelect('9999','facility', ForSelect)
 
     respond_to do |format|
