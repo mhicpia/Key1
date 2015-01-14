@@ -12,23 +12,23 @@
   <% end %>
 
   <div class="panel callout radius">
-    <div>
-      <%= f.label :description %>
-      <%= f.text_area :description %>
-    </div>
-    <div>
-      <%= f.label :number %>
-      <%= f.text_field :number %>
-    </div>
     <div id="divFacility">
       <%= f.label :facility %>
       <%#= f.text_field :facility %>
-      <%= f.select(:facility, grouped_options_for_select(@grouped_options2), prompt: 'Choose Facility') %>
+      <%= f.select(:facility, grouped_options_for_select(@grouped_options2), prompt: 'Please Select') %>
     </div>
     <div>
       <%= f.label :company %>
       <%#= f.text_field :company %>
-      <%= f.select(:company, grouped_options_for_select(@grouped_options), prompt: 'Choose Company') %>
+      <%= f.select(:company, grouped_options_for_select(@grouped_options), prompt: 'Please Select') %>
+    </div>
+    <div>
+      <%= f.label :description, 'Product' %>
+      <%= f.text_area :description %>
+    </div>
+    <div>
+      <%= f.label :number, 'ID #' %>
+      <%= f.text_field :number %>
     </div>
     <div>
       <%= f.label :checkout %>
@@ -43,6 +43,7 @@
   <div class="row">
     <div class="small-6 columns">
       <%= f.submit(class: 'button tiny radius') %>
+      <%#= f.submit 'Add / Update Company', :class => 'button tiny radius' %>
     </div>
     <div class="small-6 columns">
       <%= link_to("Cancel", "#", id: "bCancel", class: "button tiny radius") %>

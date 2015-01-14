@@ -4,7 +4,7 @@ class StaticPagesController < ApplicationController
   	@request = request
 
     session[:facility] = "0038"  # Hack as "Skill" repo doesn't contain User table nor set session variables properly
-    
+    session[:role] = "admin2"
   
   	# Raise exception if browser not chrome
   	begin

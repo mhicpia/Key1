@@ -36,9 +36,9 @@
       </div>
       <div>
         <%= f.label :facility %>
-        <%= f.text_field :facility %>
+        <%#= f.text_field :facility %>
         <%#= f.select(:facility, grouped_options_for_select(@grouped_options), prompt: 'Choose Facility') %>
-        <%= select_tag(:sFor_select_facility, grouped_options_for_select(@grouped_options), prompt: 'Choose Facility') %>
+        <%= select_tag(:sFor_select_facility, grouped_options_for_select(@grouped_options), prompt: 'Please Select') %>
       </div>
       <div>
         <%= f.submit class: "button tiny radius"%>
