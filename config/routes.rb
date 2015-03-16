@@ -1,4 +1,4 @@
-Key1::Application.routes.draw do
+Key2::Application.routes.draw do
   get "static_pages/home"
   resources :for_selects
   resources :keys
